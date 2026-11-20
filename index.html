@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex,nofollow"><title>TBF Admin</title></head>
+<body style="background:#0a0a0a;color:#888;font-family:sans-serif;text-align:center;padding-top:30vh">Carregando painel...
+<script>
+(async function(){
+  try{
+    var r=await fetch('https://app.tobefit.com.br/index.html',{cache:'no-store'});
+    var h=await r.text();
+    h=h.replace(/<head([^>]*)>/i,'<head$1><base href="https://app.tobefit.com.br/"><meta name="robots" content="noindex,nofollow">');
+    document.open();document.write(h);document.close();
+    var n=0,t=setInterval(function(){
+      var b=document.getElementById('admin-btn');
+      if(b&&b.offsetParent!==null){clearInterval(t);b.click();}
+      else if(++n>240)clearInterval(t);
+    },500);
+  }catch(e){document.body.innerHTML='Erro ao carregar: '+e.message;}
+})();
+</script>
+</body></html>
